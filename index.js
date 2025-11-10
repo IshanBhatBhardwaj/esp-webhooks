@@ -1,9 +1,8 @@
+exports.handler = async (event) => {
+    try {
+    const data = event.body ? JSON.parse(event.body) : event;
 
-export const handler = async (event) => {
-  try {
-    const json = typeof event === "string" ? JSON.parse(event) : event;
-
-    const issueUrl = json.issue?.html_url || "No issue URL found";
+    const issueUrl = data.issue?.html_url || "No issue URL found";
 
     const payload = {
       text: `Issue Created: ${issueUrl}`,
